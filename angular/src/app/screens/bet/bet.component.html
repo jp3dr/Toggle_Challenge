@@ -1,0 +1,140 @@
+<div style="height:100%">
+
+  <!-- PAGE -->
+  <div fxLayout-gt.sm='column' fxLayout='row' fxLayoutAlign='space-around center' fxFlex=100>
+
+    <mat-card  fxLayout='column' fxLayoutAlign='space-between center' fxFle=45>
+      <!-- STOCK PRICE -->
+      <div fxLayout='column' fxLayoutAlign='space-around center'>
+        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_yjwqaud8.json" background="transparent"
+          speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+        <h1>
+            BTC/USD
+          </h1>
+        <div fxLayout='row' fxLayoutAlign='space-around center'>
+          <h1>
+            $
+          </h1>
+          <h1 id='stock-price' [hidden]='loading'></h1>
+        </div>
+        <loading-spinner [IsLoading]="loading"></loading-spinner>
+        <canvas id='myCanvas' width="400" height="200">
+        </canvas>
+      </div>
+
+      <!-- ACTUAL BET -->
+      <div fxLayout='row' fxLayoutAlign='space-around center'>
+        <div fxLayout='column' fxLayoutAlign='space-around center' style='margin-right: 25px;'>
+          <h1>
+            Actual Bet
+          </h1>
+          <div fxLayout='row' fxLayoutAlign='space-around center'>
+            <mat-icon *ngIf='more && disabled'>arrow_upward</mat-icon>
+            <mat-icon *ngIf='!more && disabled'>
+              arrow_downward
+            </mat-icon>
+            <h1>
+              $
+            </h1>
+            <h1 id='your-bet'>
+            </h1>
+          </div>
+        </div>
+
+        <div fxLayout='column' fxLayoutAlign='space-around center'>
+          <h1>
+            Timer
+          </h1>
+          <h1 id='timer'>
+            00
+          </h1>
+        </div>
+      </div>
+
+    </mat-card>
+
+    <div fxLayout='column' fxLayoutAlign='space-around center' fxFlex=45>
+      <!-- BET BUTTONS AND SCORE -->
+      <mat-card fxLayout='column' fxLayoutAlign='space-around center' style='margin-bottom:10px'>
+        <div>
+          <h1>
+            Tell me if it will go up or down
+          </h1>
+        </div>
+
+        <div fxLayout='row' style='width:100%' fxLayoutAlign='space-around center'>
+
+          <div fxLayout='column'>
+            <div>
+              <h3>
+                BET
+              </h3>
+            </div>
+            <div>
+              <button id='upButton' (click)='bet(1)' [disabled]='disabled'>
+                <mat-icon>
+                  arrow_upward
+                </mat-icon>
+              </button>
+            </div>
+            <div>
+              <button id='downButton' (click)='bet(0)' [disabled]='disabled'>
+                <mat-icon>
+                  arrow_downward
+                </mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div fxLayout='column' fxLayoutAlign='space-around center'>
+            <h1>
+              Score
+            </h1>
+            <h1 id='score'>
+              0
+            </h1>
+          </div>
+        </div>
+
+      </mat-card>
+
+      <!-- LAST ROUND STATS -->
+      <mat-card style='width:100%'>
+        <div>
+          <h2>Last Round Stats:</h2>
+        </div>
+        <div fxLayout='row' fxLayoutAlign='space-around center'>
+          <div>
+            <h4>Begin</h4>
+            <h4 id='beginStat'></h4>
+          </div>
+          <div>
+            <h4>End</h4>
+            <h4 id='endStat'></h4>
+          </div>
+          <div>
+            <h4>Bet</h4>
+            <mat-icon id='iconStat'>
+
+            </mat-icon>
+          </div>
+          <div>
+            <h4>Result</h4>
+            <h4 id='winLoose'>
+            </h4>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- LOGOUT BUTTON -->
+  <button style='height:10%' (click)="logout()" class="newButtonLogin clickable" fxLayout='row'
+    fxLayoutAlign='space-around center'>
+    
+    Logout
+    <mat-icon>
+      sensor_door
+    </mat-icon>
+  </button>
+</div>

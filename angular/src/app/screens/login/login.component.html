@@ -1,0 +1,49 @@
+<div class="allPageLogin fixed-100pc" fxLayout="row" fxLayoutAlign="center center">
+    <div class="fixed-100pc" fxLayoutAlign="center center" style="background-color: #65656a">
+        <mat-card class="basicMatCard" fxLayout="column" fxLayoutAlign="center center">
+
+
+            <loading-spinner [IsLoading]="IsLoading"></loading-spinner>
+
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2%" *ngIf="!IsLoading">
+                <div class="welcomeText">
+                    <h3 style="
+                            color: #3d3d40;
+                            font-weight: bold;
+                            margin-bottom: -3px;
+                            text-align: center;
+                        ">
+                        Welcome!
+                    </h3>
+                </div>
+        
+                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_w5za5r6v.json"  background="transparent"  speed="1"  style="width: 250px; height: 250px;"  loop autoplay></lottie-player>
+
+                <div fxLayout="column" fxLayoutAlign="center center" class="w-mincontent">
+                    <form>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput name="emailInput" [(ngModel)]="Email" placeholder="joao@gmail.com" />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Senha</mat-label>
+                            <input matInput name="passwordInput" [(ngModel)]="Password" type="password" />
+                        </mat-form-field>
+                    </form>
+
+                    <div class="buttons_site w-fixed-100pc" fxLayout="row" fxLayoutAlign="space-around center"
+                        fxLayoutGap="5%">
+                        <button (click)="emailLogin()" class="newButtonLogin clickable">
+                            <!-- mat-stroked-button -->
+                            Login
+                        </button>
+                        <button (click)="emailSignUp()" class="newButtonLogin clickable">
+                            <!-- mat-stroked-button -->
+                            SignUp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
